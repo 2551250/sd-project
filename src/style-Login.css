@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  background-color: #FBE5C8;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 150px;
+}
+
+/*Design for Header contained items*/
+.header-container {
+  max-width: 1200px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 150px;
+}
+/*Design for Nav Items*/
+.listItem{
+  padding-right: 20px;
+  text-decoration: none;
+  
+}
+/*Design for Login Box*/
+.login-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+
+}
+/*Design for Login box heading*/
+.login-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/*Design for labels Email and Password*/
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/*Design for labels Email and Password input fields*/
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+/*Design for Button*/
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+/*Design for footer*/
+footer {
+  background-color: #FBE5C8;
+  width: 100%;
+  text-align: center;
+  font-size: small;
+  margin-top: 215px;
+}

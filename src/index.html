@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - WorkWise</title>
+    <link rel="stylesheet" href="style-Login.css">
+    <script src="script-Login.js" defer></script>
 </head>
-
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
+    <header>
+        <section class="header-container">
+            <h1>WorkWise</h1>
+        </section>
+    </header>
+    <main>
+        <section class="login-section">
+            <h2 id = "login">Login</h2>
+            <form>
+                <article class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </article>
+                <article class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </article>
+                <button onclick="login()" type="button">Login</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <section class="footer-container">
+            <p>&copy; 2024 WorkWise. All rights reserved.</p>
+        </section>
+    </footer>
 </body>
-
 </html>
