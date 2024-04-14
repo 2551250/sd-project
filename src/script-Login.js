@@ -42,16 +42,13 @@ async function login(){
 		//TODO add error handling
 		return;
   	}
-  	// Get email and password from form
-  	// const email = document.getElementById('email').value;
-  	// const password = document.getElementById('password').value;
-
-	const email = "nraji@workwise.co.za";
-	const password = "password";
+  	
+	// Get email and password from form
+  	const email = document.getElementById('email').value;
+  	const password = document.getElementById('password').value
 
   	if (!employeeExists(email, password, data)){
 		// TODO add employee doesn't exist handling
-		alert("User doesn't Exist")
 		return;
   	}
 
