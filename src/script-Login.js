@@ -57,6 +57,4 @@ async function login(){
 
   	const role = getRole(email, password, data);
   	console.log(role);
-
-  	document.location = role.toLowerCase() + '-Page.html';
 }
