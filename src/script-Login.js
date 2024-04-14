@@ -1,37 +1,62 @@
 // Function returns all employees in the database (staff, manager and HR)
 async function list() {
   try{
-    // Endpoint to get employees
-    const endpoint = '/data-api/rest/Employee';
-    const response = await fetch(endpoint);
-    const data = await response.json();
-    return data.value;
+	// Endpoint to get employees
+	const endpoint = '/data-api/rest/Employee';
+	const response = await fetch(endpoint);
+	const data = await response.json();
+	return data.value;
   }catch(err){
-    console.log(err);
-    return "Error";
+	console.log(err);
+	return "Error";
   }
+}
+
+function employeeExists(email, password, data) {
+  	// Checks if employee exists
+  	for(let i = 0; i < data.length; i++){
+		const obj = data[i];
+		if(obj.EMAIL === email && obj.PASSWORD === password){
+			return true; // Employee does exist
+			break;
+		}
+  	}
+	return false; // Employe doesn't exist
+}
+
+function getRole(email, password, data) {
+	// Finds the role of an employee -> {Staff, Manager, HR}
+	for(let i = 0; i < data.length; i++){
+		const obj = data[i];
+		if(obj.EMAIL === email && obj.PASSWORD === password){
+			return obj.ROLE; // returns the role
+		}
+  	}
+	return "";
 }
 
 // Function verifies the identity of an employee
 async function login(){
-  data = await(list());
-  if(data === "Error"){
-    //TODO add error handling
-    return;
-  }
-  // Get email and password from form
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  let valid = false;
-  // Checks if employee valid
-  for(let i = 0; i < data.length; i++){
-    const obj = data[i];
-    if(obj.EMAIL === email && obj.PASSWORD === password){
-      valid = true;
-      break;
-    }
-  }
+  	data = await(list());
+  	if(data === "Error"){
+		//TODO add error handling
+		return;
+  	}
+  	// Get email and password from form
+  	// const email = document.getElementById('email').value;
+  	// const password = document.getElementById('password').value;
 
-  console.log(valid);
+	const email = "nraji@workwise.co.za";
+	const password = "password";
 
+  	if (!employeeExists(email, password, data)){
+		// TODO add employee doesn't exist handling
+		alert("User doesn't Exist")
+		return;
+  	}
+
+  	const role = getRole(email, password, data);
+  	console.log(role);
+
+  	document.location = role.toLowerCase() + '-Page.html';
 }
