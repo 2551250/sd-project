@@ -32,11 +32,6 @@ jobs:
           api_location: "api" # Api source code path - optional
           output_location: "/src" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: 2551250/sd-project
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -49,8 +44,22 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_DESERT_00472EF03 }}
           action: "close"
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
+
+  code_coverage_job:
+    runs-on: ubuntu-latest
+    name: Code Coverage Job
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+        
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: 2551250/sd-project
+            node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Run the tests
+        run: npm test -- --coverage
