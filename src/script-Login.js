@@ -55,6 +55,7 @@ async function login(){
 		return;
   	}
 
+	// Find the role of existing employee
   	const role = getRole(email, password, data);
   	console.log(role);
 }
