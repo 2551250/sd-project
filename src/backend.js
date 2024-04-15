@@ -13,6 +13,7 @@ async function list() {
       return "Error";
     }
   }
+
   
 function employeeExists(email, password, data) {
         // Checks if employee exists
@@ -56,5 +57,19 @@ async function login(){
       // Find the role of existing employee
         const role = getRole(email, password, data);
         console.log(role);
+
+        switch (role) {
+          case "Staff":
+            window.location.href = "staff_page.html";
+            break;
+          case "Manager":
+            window.location.href = "manager_page.html";
+            break;
+          case "HR":
+            window.location.href = "HR_page.html";
+            break;
+          default:
+            alert("Ünknown Role");
+        }
   }
   
